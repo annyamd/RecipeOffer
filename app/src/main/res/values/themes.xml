@@ -1,0 +1,25 @@
+<resources>
+    <!-- Base application theme. -->
+
+    <style name="Theme.RecipeOffer" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <item name="colorPrimary">@color/basic_teal</item>
+        <item name="colorPrimaryVariant">@color/basic_teal_light</item>
+        <item name="colorOnPrimary">@color/basic_black</item>
+        <item name="colorPrimaryDark">@color/basic_teal_dark</item>
+        <item name="colorSecondary">@color/basic_amber</item>
+        <item name="colorSecondaryVariant">@color/basic_amber_light</item>
+        <item name="colorOnSecondary">@color/basic_black</item>
+        <item name="android:windowBackground">@color/basic_white</item>
+
+        <!-- Default text settings-->
+        <item name="textAllCaps">false</item>
+        <item name="fontFamily">@font/albert_sans_extra_bold</item>
+    </style>
+
+    <style name="EditTextFieldStyle">
+        <item name="android:maxLines">1</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Basic App</string>
+    <string name="welcome_text">Hey, \nLogin Now.</string>
+    <string name="icon_desc">icon</string>
+    <string name="register_question">If you are new /</string>
+    <string name="register_link_text">Create New</string>
+    <string name="reset_pass_question">Forgot password? /</string>
+    <string name="reset_link">Reset</string>
+    <string name="login_btn_text">Login</string>
+    <string name="skip_login_link_text">Skip Now</string>
+    <string name="login_hint">Login</string>
+    <string name="pass_hint">Password</string>
+    <string name="welcome_string">Welcome, User! Here you can find a recipe by ingredients you have.</string>
+    <string name="search_btn">Search</string>
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="basic_teal">#8acac0</color>
+    <color name="basic_teal_light">#bdfdf3</color>
+    <color name="basic_teal_dark">#5b9990</color>
+    <color name="basic_amber">#fcb64c</color>
+    <color name="basic_amber_light">#fdce85</color>
+    <color name="basic_amber_dark">#c58618</color>
+    <color name="basic_black">#000000</color>
+    <color name="basic_white">#ffffff</color>
+
+    <color name="basic_grey_light">#f6f6f6</color>
+    <color name="dark_grey">#5a5859</color>
+
+
+</resources>
