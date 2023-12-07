@@ -16,7 +16,7 @@ import com.example.recipeoffer.viewmodel.IngredientViewModel
 class IngredientChooseFragment : Fragment() {
 
     private var viewBinding: FragmentChooseIngredientBinding? = null
-    private val viewModel: IngredientViewModel by activityViewModels{
+    private val viewModel: IngredientViewModel by activityViewModels {
         IngredientViewModel.IngredientViewModelFactory((activity?.application as RecipeApplication).repository)
     }
 
@@ -40,8 +40,12 @@ class IngredientChooseFragment : Fragment() {
         viewBinding?.addIngrButton?.setOnClickListener {
             val input = viewBinding?.ingrEditText?.text.toString()
             if (input != "") {
-                viewModel.insert(Ingredient(name = input))
-                viewBinding?.ingrEditText?.text?.clear()
+                if ((viewModel.ingredients.value?.size ?: 0) <= 10) {
+                    viewModel.insert(Ingredient(name = input))
+                    viewBinding?.ingrEditText?.text?.clear()
+                } else {
+                    Toast.makeText(context, "10 ingredients is maximum", Toast.LENGTH_SHORT).show()
+                }
             } else {
                 Toast.makeText(context, "Empty", Toast.LENGTH_SHORT).show()
             }
@@ -49,7 +53,8 @@ class IngredientChooseFragment : Fragment() {
 
         viewModel.ingredients.observe(this.viewLifecycleOwner) { newList ->
             adapter.ingredients = newList
-            viewBinding?.listNameTextView?.visibility = if (viewModel.ingredients.value?.isEmpty() == true) View.INVISIBLE else View.VISIBLE
+            viewBinding?.listNameTextView?.visibility =
+                if (viewModel.ingredients.value?.isEmpty() == true) View.INVISIBLE else View.VISIBLE
         }
 
     }

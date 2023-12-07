@@ -42,7 +42,7 @@
         android:background="@drawable/button_primary"
         android:padding="4dp"
         android:text="@string/add"
-        app:layout_constraintBottom_toBottomOf="@+id/ingr_edit_text"
+        app:layout_constraintBottom_toBottomOf="@id/ingr_edit_text"
         app:layout_constraintEnd_toEndOf="@id/ingr_edit_text"
         app:layout_constraintTop_toTopOf="@id/ingr_edit_text"
         app:layout_constraintVertical_bias="0.5" />
@@ -59,14 +59,16 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ingredient_list_rv"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@id/search_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_name_text_view"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/list_name_text_view"
+        android:scrollbars="vertical"
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -74,7 +76,7 @@
         android:layout_height="wrap_content"
         android:text="@string/welcome_string"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/ingr_edit_text"
+        app:layout_constraintBottom_toTopOf="@id/ingr_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
