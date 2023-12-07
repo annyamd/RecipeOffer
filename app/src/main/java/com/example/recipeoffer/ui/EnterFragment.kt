@@ -1,4 +1,4 @@
-package com.example.recipeoffer
+package com.example.recipeoffer.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.room.Room
+import com.example.recipeoffer.R
 import com.example.recipeoffer.databinding.FragmentEnterBinding
 import com.example.recipeoffer.db.AppDatabase
 
 class EnterFragment : Fragment(R.layout.fragment_enter) {
 
     private var appDatabase: AppDatabase? = null
-    private var _binding: FragmentEnterBinding? = null
-    private val binding get() = _binding!!
+    private var binding: FragmentEnterBinding? = null
 
 
     override fun onCreateView(
@@ -22,8 +22,8 @@ class EnterFragment : Fragment(R.layout.fragment_enter) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentEnterBinding.inflate(inflater, container, false)
-        return binding.root
+        binding = FragmentEnterBinding.inflate(inflater, container, false)
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,17 +33,17 @@ class EnterFragment : Fragment(R.layout.fragment_enter) {
             createDatabase()
 
 //            appDatabase?.getUserDao()?.addUser(User("anya", "123"))
+        }
 
-            binding.loginButton.setOnClickListener {
-                val login = binding.loginEt.text.toString()
-                val password = binding.passwordEt.text.toString()
+        binding?.loginButton?.setOnClickListener {
+            val login = binding?.loginEt?.text.toString()
+            val password = binding?.passwordEt?.text.toString()
 
-                val foundUser = appDatabase?.getUserDao()?.getUserByLogin(login)
-                if (foundUser?.password == password) {
-                    Toast.makeText(context, "YOU PASSED", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(context, "NO PASS... SORRY", Toast.LENGTH_SHORT).show()
-                }
+            val foundUser = appDatabase?.getUserDao()?.getUserByLogin(login)
+            if (foundUser?.password == password) {
+                Toast.makeText(context, "YOU PASSED", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "NO PASS... SORRY", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -65,7 +65,7 @@ class EnterFragment : Fragment(R.layout.fragment_enter) {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 
 }

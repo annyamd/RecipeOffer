@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="32dp">
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/search_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/search_btn"
@@ -20,28 +19,54 @@
         android:background="@drawable/button_primary"
         />
 
-    <SearchView
-        android:id="@+id/searchView2"
+    <EditText
+        android:id="@+id/ingr_edit_text"
+        style="@style/EditTextFieldStyle"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:layout_marginTop="80dp"
-        android:background="@color/basic_amber_light"
-        android:queryHint="Write next ingredient..."
+        android:autofillHints=""
+        android:background="@drawable/edit_text_field"
+        android:hint="@string/next_ingr"
+        android:inputType="text"
+        android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="340dp"
+    <Button
+        android:id="@+id/add_ingr_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/button_primary"
+        android:padding="4dp"
+        android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="@+id/ingr_edit_text"
+        app:layout_constraintEnd_toEndOf="@id/ingr_edit_text"
+        app:layout_constraintTop_toTopOf="@id/ingr_edit_text"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/list_name_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/your_list"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView2"
-        app:layout_constraintVertical_bias="0.0"
-        android:background="@color/basic_amber_light"/>
+        app:layout_constraintTop_toBottomOf="@+id/ingr_edit_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ingredient_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@id/search_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_name_text_view"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView"
@@ -49,7 +74,7 @@
         android:layout_height="wrap_content"
         android:text="@string/welcome_string"
         android:textSize="28sp"
-        app:layout_constraintBottom_toTopOf="@+id/searchView2"
+        app:layout_constraintBottom_toTopOf="@+id/ingr_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
