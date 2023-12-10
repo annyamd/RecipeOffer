@@ -10,14 +10,15 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipeoffer.RecipeApplication
 import com.example.recipeoffer.databinding.FragmentChooseIngredientBinding
-import com.example.recipeoffer.model.Ingredient
+import com.example.recipeoffer.data.model.Ingredient
 import com.example.recipeoffer.viewmodel.IngredientViewModel
 
 class IngredientChooseFragment : Fragment() {
 
     private var viewBinding: FragmentChooseIngredientBinding? = null
     private val viewModel: IngredientViewModel by activityViewModels {
-        IngredientViewModel.IngredientViewModelFactory((activity?.application as RecipeApplication).repository)
+        IngredientViewModel.IngredientViewModelFactory((activity?.application
+                as RecipeApplication).ingredientRepository)
     }
 
     override fun onCreateView(
@@ -49,6 +50,10 @@ class IngredientChooseFragment : Fragment() {
             } else {
                 Toast.makeText(context, "Empty", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        viewBinding?.searchButton?.setOnClickListener {
+            viewModel.isNeedToSearch.value = true
         }
 
         viewModel.ingredients.observe(this.viewLifecycleOwner) { newList ->

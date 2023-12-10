@@ -1,11 +1,11 @@
-package com.example.recipeoffer.db.dao
+package com.example.recipeoffer.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
-import com.example.recipeoffer.model.User
+import com.example.recipeoffer.data.model.User
 
 @Dao
 interface UserDao {

@@ -1,7 +1,7 @@
-package com.example.recipeoffer.db.repository
+package com.example.recipeoffer.data.repository
 
-import com.example.recipeoffer.db.dao.IngredientDao
-import com.example.recipeoffer.model.Ingredient
+import com.example.recipeoffer.data.db.dao.IngredientDao
+import com.example.recipeoffer.data.model.Ingredient
 import kotlinx.coroutines.flow.Flow
 
 class IngredientRepository(private val ingredientDao: IngredientDao) {

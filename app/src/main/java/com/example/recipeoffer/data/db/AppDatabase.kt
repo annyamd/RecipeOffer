@@ -1,13 +1,13 @@
-package com.example.recipeoffer.db
+package com.example.recipeoffer.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.recipeoffer.db.dao.IngredientDao
-import com.example.recipeoffer.db.dao.UserDao
-import com.example.recipeoffer.model.Ingredient
-import com.example.recipeoffer.model.User
+import com.example.recipeoffer.data.db.dao.IngredientDao
+import com.example.recipeoffer.data.db.dao.UserDao
+import com.example.recipeoffer.data.model.Ingredient
+import com.example.recipeoffer.data.model.User
 
 @Database(entities = [User::class, Ingredient::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {

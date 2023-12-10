@@ -1,9 +1,9 @@
-package com.example.recipeoffer.db.dao
+package com.example.recipeoffer.data.db.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.recipeoffer.model.Ingredient
+import com.example.recipeoffer.data.model.Ingredient
 import kotlinx.coroutines.flow.Flow
 
 @Dao

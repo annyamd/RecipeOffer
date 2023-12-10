@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.room.Room
 import com.example.recipeoffer.R
 import com.example.recipeoffer.databinding.FragmentEnterBinding
-import com.example.recipeoffer.db.AppDatabase
+import com.example.recipeoffer.data.db.AppDatabase
 
 class EnterFragment : Fragment(R.layout.fragment_enter) {
 
