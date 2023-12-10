@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recipeoffer.databinding.IngredientsListItemBinding
 import com.example.recipeoffer.data.model.Ingredient
 
-class IngredientsAdapter(ingredients: List<Ingredient>)
+class IngredientsAdapter(ingredients: List<Ingredient>, private val clickListener: ItemClickListener)
     : RecyclerView.Adapter<IngredientsAdapter.ViewHolder>(){
 
     var ingredients = ingredients
@@ -19,7 +19,12 @@ class IngredientsAdapter(ingredients: List<Ingredient>)
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = IngredientsListItemBinding.inflate(inflater, parent, false)
-        return ViewHolder(binding)
+        val vh = ViewHolder(binding)
+        binding.ingrCancelImage.setOnClickListener {
+            val pos = vh.adapterPosition
+            clickListener.onCancelClicked(ingredients[pos])
+        }
+        return vh
     }
 
     override fun getItemCount(): Int {
@@ -28,5 +33,9 @@ class IngredientsAdapter(ingredients: List<Ingredient>)
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.binding.ingredientItemName.text = ingredients[position].name
+    }
+
+    interface ItemClickListener {
+        fun onCancelClicked(ingredient: Ingredient)
     }
 }

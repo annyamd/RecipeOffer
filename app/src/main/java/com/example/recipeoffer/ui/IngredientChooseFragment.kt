@@ -13,7 +13,7 @@ import com.example.recipeoffer.databinding.FragmentChooseIngredientBinding
 import com.example.recipeoffer.data.model.Ingredient
 import com.example.recipeoffer.viewmodel.IngredientViewModel
 
-class IngredientChooseFragment : Fragment() {
+class IngredientChooseFragment : Fragment(), IngredientsAdapter.ItemClickListener {
 
     private var viewBinding: FragmentChooseIngredientBinding? = null
     private val viewModel: IngredientViewModel by activityViewModels {
@@ -33,7 +33,8 @@ class IngredientChooseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = IngredientsAdapter(
-            viewModel.ingredients.value ?: emptyList()
+            viewModel.ingredients.value ?: emptyList(),
+            this
         )
         viewBinding?.ingredientListRv?.adapter = adapter
         viewBinding?.ingredientListRv?.layoutManager = LinearLayoutManager(context)
@@ -67,6 +68,10 @@ class IngredientChooseFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         viewBinding = null
+    }
+
+    override fun onCancelClicked(ingredient: Ingredient) {
+        viewModel.delete(ingredient)
     }
 
 }

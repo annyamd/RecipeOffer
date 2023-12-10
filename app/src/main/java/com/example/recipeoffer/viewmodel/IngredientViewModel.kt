@@ -20,6 +20,10 @@ class IngredientViewModel(private val repository: IngredientRepository) : ViewMo
         repository.insert(ingredient)
     }
 
+    fun delete(ingredient: Ingredient) = viewModelScope.launch {
+        repository.delete(ingredient)
+    }
+
     class IngredientViewModelFactory(private val repository: IngredientRepository)
         :  ViewModelProvider.Factory {
         override fun <T : ViewModel> create(modelClass: Class<T>): T {
