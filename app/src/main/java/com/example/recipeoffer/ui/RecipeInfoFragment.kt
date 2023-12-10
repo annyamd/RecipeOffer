@@ -31,7 +31,6 @@ class RecipeInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        model.updateRecipeInfo()
         model.recipeInfo.observe(this.viewLifecycleOwner) {
             if (it.isNotEmpty()) {
                 binding?.recipeNameTextView?.text = it[0].title
@@ -39,6 +38,11 @@ class RecipeInfoFragment : Fragment() {
                 binding?.recipeNameTextView?.text = "No recipe found"
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        model.updateRecipeInfo()
     }
 
 }
