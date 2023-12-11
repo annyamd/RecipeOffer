@@ -29,7 +29,7 @@ class SpoonacularService {
 
     companion object {
         private const val SP_BASE_URL: String = "https://api.spoonacular.com/"
-        private const val SP_API_KEY: String = "e1b57e35f5184b198917839cda8e7926"
+        private const val SP_API_KEY: String = "da6f9feefe9b45f295e2bc9f27d2bb3e"
     }
 
 

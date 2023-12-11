@@ -17,8 +17,10 @@ class IngredientChooseFragment : Fragment(), IngredientsAdapter.ItemClickListene
 
     private var viewBinding: FragmentChooseIngredientBinding? = null
     private val viewModel: IngredientViewModel by activityViewModels {
-        IngredientViewModel.IngredientViewModelFactory((activity?.application
-                as RecipeApplication).ingredientRepository)
+        IngredientViewModel.IngredientViewModelFactory(
+            (activity?.application
+                    as RecipeApplication).ingredientRepository
+        )
     }
 
     override fun onCreateView(
@@ -36,33 +38,37 @@ class IngredientChooseFragment : Fragment(), IngredientsAdapter.ItemClickListene
             viewModel.ingredients.value ?: emptyList(),
             this
         )
-        viewBinding?.ingredientListRv?.adapter = adapter
-        viewBinding?.ingredientListRv?.layoutManager = LinearLayoutManager(context)
 
-        viewBinding?.addIngrButton?.setOnClickListener {
-            val input = viewBinding?.ingrEditText?.text.toString()
-            if (input != "") {
-                if ((viewModel.ingredients.value?.size ?: 0) <= 10) {
-                    viewModel.insert(Ingredient(name = input))
-                    viewBinding?.ingrEditText?.text?.clear()
+        viewBinding?.run {
+            ingredientListRv.adapter = adapter
+            ingredientListRv.layoutManager = LinearLayoutManager(context)
+
+            addIngrButton.setOnClickListener {
+                val input = ingrEditText.text.toString().trim()
+                if (input == "") {
+                    Toast.makeText(context, "Empty", Toast.LENGTH_SHORT).show()
                 } else {
-                    Toast.makeText(context, "10 ingredients is maximum", Toast.LENGTH_SHORT).show()
+                    val listSize = viewModel.ingredients.value?.size ?: 0
+                    if (listSize <= 10) {
+                        viewModel.insert(Ingredient(name = input))
+                        ingrEditText.text?.clear()
+                    } else {
+                        Toast.makeText(context, "10 ingredients is maximum", Toast.LENGTH_SHORT)
+                            .show()
+                    }
                 }
-            } else {
-                Toast.makeText(context, "Empty", Toast.LENGTH_SHORT).show()
+            }
+
+            searchButton.setOnClickListener {
+                viewModel.isNeedToSearch.value = true
+            }
+
+            viewModel.ingredients.observe(this@IngredientChooseFragment.viewLifecycleOwner) { newList ->
+                adapter.ingredients = newList
+                listNameTextView.visibility =
+                    if (viewModel.ingredients.value?.isEmpty() == true) View.INVISIBLE else View.VISIBLE
             }
         }
-
-        viewBinding?.searchButton?.setOnClickListener {
-            viewModel.isNeedToSearch.value = true
-        }
-
-        viewModel.ingredients.observe(this.viewLifecycleOwner) { newList ->
-            adapter.ingredients = newList
-            viewBinding?.listNameTextView?.visibility =
-                if (viewModel.ingredients.value?.isEmpty() == true) View.INVISIBLE else View.VISIBLE
-        }
-
     }
 
     override fun onDestroyView() {

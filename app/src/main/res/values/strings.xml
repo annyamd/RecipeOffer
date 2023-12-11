@@ -12,10 +12,14 @@
     <string name="pass_hint">Password</string>
     <string name="welcome_string">Welcome, User! Here you can find a recipe by ingredients you have.</string>
     <string name="search_btn">Search</string>
-    <string name="next_ingr">Write next ingredient...</string>
+    <string name="next_ingr">Write next ingredient…</string>
     <string name="add_ingredient">Add ingredient</string>
     <string name="add">add</string>
     <string name="point_for_list_item">point for list item</string>
     <string name="your_list">Your list</string>
     <string name="cancel">cancel</string>
+    <string name="cooking_time">time to cook</string>
+    <string name="ingredients_header">Ingredients</string>
+    <string name="steps_title">Steps</string>
+    <string name="no_recipe_found_message">No recipe found</string>
 </resources>
