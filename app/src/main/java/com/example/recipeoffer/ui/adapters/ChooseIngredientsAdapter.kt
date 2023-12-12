@@ -1,13 +1,15 @@
-package com.example.recipeoffer.ui
+package com.example.recipeoffer.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.recipeoffer.databinding.IngredientsListItemBinding
 import com.example.recipeoffer.data.model.Ingredient
+import com.example.recipeoffer.databinding.ChooseIngredientsListItemBinding
 
-class IngredientsAdapter(ingredients: List<Ingredient>, private val clickListener: ItemClickListener)
-    : RecyclerView.Adapter<IngredientsAdapter.ViewHolder>(){
+class ChooseIngredientsAdapter(
+    ingredients: List<Ingredient>,
+    private val clickListener: ItemClickListener
+) : RecyclerView.Adapter<ChooseIngredientsAdapter.ViewHolder>() {
 
     var ingredients = ingredients
         set(value) {
@@ -15,10 +17,12 @@ class IngredientsAdapter(ingredients: List<Ingredient>, private val clickListene
             notifyDataSetChanged()
         }
 
-    class ViewHolder(val binding: IngredientsListItemBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ChooseIngredientsListItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = IngredientsListItemBinding.inflate(inflater, parent, false)
+        val binding = ChooseIngredientsListItemBinding.inflate(inflater, parent, false)
         val vh = ViewHolder(binding)
         binding.ingrCancelImage.setOnClickListener {
             val pos = vh.adapterPosition

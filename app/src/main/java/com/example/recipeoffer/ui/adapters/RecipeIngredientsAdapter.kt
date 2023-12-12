@@ -1,4 +1,4 @@
-package com.example.recipeoffer.ui
+package com.example.recipeoffer.ui.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -30,7 +30,7 @@ class RecipeIngredientsAdapter :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.ingredientItemName.text = ingredients[position].original
+        holder.binding.ingredientItemName.text = ingredients[position].amountUnit
     }
 
 }

@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recipeoffer.RecipeApplication
 import com.example.recipeoffer.databinding.FragmentChooseIngredientBinding
 import com.example.recipeoffer.data.model.Ingredient
+import com.example.recipeoffer.ui.adapters.ChooseIngredientsAdapter
 import com.example.recipeoffer.viewmodel.IngredientViewModel
 
-class IngredientChooseFragment : Fragment(), IngredientsAdapter.ItemClickListener {
+class IngredientChooseFragment : Fragment(), ChooseIngredientsAdapter.ItemClickListener {
 
     private var viewBinding: FragmentChooseIngredientBinding? = null
     private val viewModel: IngredientViewModel by activityViewModels {
@@ -34,7 +35,7 @@ class IngredientChooseFragment : Fragment(), IngredientsAdapter.ItemClickListene
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = IngredientsAdapter(
+        val adapter = ChooseIngredientsAdapter(
             viewModel.ingredients.value ?: emptyList(),
             this
         )

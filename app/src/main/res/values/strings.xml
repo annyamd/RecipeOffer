@@ -22,4 +22,5 @@
     <string name="ingredients_header">Ingredients</string>
     <string name="steps_title">Steps</string>
     <string name="no_recipe_found_message">No recipe found</string>
+    <string name="time_min">%1$dmin</string>
 </resources>
